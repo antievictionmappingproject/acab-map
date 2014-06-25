@@ -60,7 +60,7 @@ function addOverlay() {
           console.log(data[month][d.zip]);
         })
         .transition()
-        .duration(500)
+        .duration(250)
         .attr("fill",function(d){return scale(data[month][d.zip])});
       $("#map_month").text(month+1);
       month += 1;
@@ -68,7 +68,7 @@ function addOverlay() {
         clearInterval(inner_interval);
         get_data();
       }
-    }, 2000);
+    }, 1000);
   }
 
   // Reposition the SVG to cover the features.
