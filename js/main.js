@@ -27,6 +27,7 @@ function addOverlay() {
       .defer(d3.json, "/acabmap/bayarea-zips.geo.json")
       .defer(d3.json, "/acabmap/sfpd/sfpd_compiled_incidents_"+year+".json")
       .await(init);
+    $("#map_year").text(year);
     year += 1;
     if (year == 2015) {
       year = 2003
@@ -46,7 +47,8 @@ function addOverlay() {
     feature.enter()
       .append("path")
       .attr("stroke-width","2px")
-      .attr("stroke","green");
+      .attr("stroke","green")
+      .attr("fill-opacity",.7);
     
     map.on("viewreset", reset);
     reset();
@@ -54,17 +56,19 @@ function addOverlay() {
     var month = 0
     var inner_interval = window.setInterval(function(){
       feature
-        .attr("fill",function(d){return scale(data[month][d.zip])})
-        .attr("fill-opacity",.7)
         .on('mouseover',function(d){
           console.log(data[month][d.zip]);
-        });
+        })
+        .transition()
+        .duration(500)
+        .attr("fill",function(d){return scale(data[month][d.zip])});
+      $("#map_month").text(month+1);
       month += 1;
       if(month == 12) {
         clearInterval(inner_interval);
         get_data();
       }
-    }, 3000);
+    }, 2000);
   }
 
   // Reposition the SVG to cover the features.

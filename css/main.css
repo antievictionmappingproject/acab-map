@@ -64,11 +64,6 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
-
-
-
 #map {
   position:absolute;
   height:100%;
@@ -79,22 +74,18 @@ textarea {
   right:0;
 }
 
-svg .pretty {
-  stroke:"#58D97D";
-  stroke-width:2px;
-  fill:transprent;
+#map_overlay {
+  position:absolute;
+  bottom:0;
+  left:0;
+  height:50px;
+  width:200px;
+  background:rgba(0,0,0,0.6);
+  color:white;
+  text-align:center;
+  line-height:50px;
+  font-weight:bold;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Helper classes
