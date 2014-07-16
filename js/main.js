@@ -99,11 +99,29 @@ function addOverlay() {
   get_data();
   return svg;
 }
+var markers = new L.MarkerClusterGroup();
+var year = 2003;
+function addMarkers(year) {
+  markers.clearLayers();
+  $.get(
+    '/acabmap/sfpd/mission-police-'+year+'.json', 
+    function(d){
+      _.each(d, function(v){
+        markers.addLayer( L.marker( [v['Y'], v['X']] ) );
+      });
+    },
+    'json'
+  );
+  map.addLayer(markers);
+  year += 1;
+}
 
 (function($){
     map = L.map('map',{maxZoom: 19});
     layer = new L.StamenTileLayer("toner-lite");
     map.addLayer(layer).setView(new L.LatLng(37.7833, -122.4167), 12);
-    addOverlay();
+    addMarkers(year);
+    //addOverlay();
+    
 })($);
 
