@@ -10,14 +10,13 @@ def wccount(filename):
    return int(out.partition(b' ')[0])
 
 def do_stuff(year):
-    outfile = open('sfpd/mission-police-%s.json' % year,'w+')
+    outfile = open('sfpd-compiled/sfpd-%s.json' % year,'w+')
     outjson = []
     police_file = csv.DictReader(open('sfpd/sfpd_incident_with_zip_%d.csv' % year))
     for incident in progress.bar( police_file, expected_size=wccount('sfpd/sfpd_incident_with_zip_%d.csv' % year) ):
-        if incident['ZIP'] == '94110':
-            outjson.append( incident )
+        outjson.append( incident )
     outfile.write(json.dumps(outjson))
     outfile.close
 
-do_stuff(2014)
+[do_stuff(x) for x in range(2003,2015)]
 

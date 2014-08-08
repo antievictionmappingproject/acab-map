@@ -87,6 +87,13 @@ textarea {
   font-weight:bold;
 }
 
+#chart div {
+  background:gainsboro;
+  margin-right:2px;
+  float:left;
+  width:50px;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
