@@ -46,11 +46,39 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/leaflet.css">
         <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+            <style>
+/* tell the SVG path to be a thin blue line without any area fill */
+path {
+stroke: steelblue;
+stroke-width: 1;
+fill: none;
+}
+.axis {
+shape-rendering: crispEdges;
+}
+ 
+.x.axis line {
+stroke: lightgrey;
+}
+ 
+.x.axis .minor {
+stroke-opacity: .5;
+}
+ 
+.x.axis path {
+display: none;
+}
+ 
+.y.axis line, .y.axis path {
+fill: none;
+stroke: #000;
+}
+</style>
     </head>
     <body>
 
         <!-- Add your site or application content here -->
-        <div id="chart"></div>
+        <div id="graph" class="aGraph" style="position:absolute;top:0px;left:0; float:left;"></div>
 
         <script src="js/vendor/jquery-2.1.0.min.js"></script>
         <script src="//cdn.jsdelivr.net/lodash/2.4.1/lodash.min.js"></script>
