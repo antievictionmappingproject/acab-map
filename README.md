@@ -12,4 +12,4 @@ Here's the install waterfall if you have Mac OS X:
 4. [Pip](https://pypi.python.org/pypi/pip) - A Python package manager (if you've installed Python, Pip should already be installed)
 5. **pip install -r requirements.txt** - Installs the dependencies for this repo
 
-Other instructions can be found in the (wiki)[https://github.com/antievictionmappingproject/acab-map/wiki].
+Other instructions can be found in the wiki: https://github.com/antievictionmappingproject/acab-map/wiki.
