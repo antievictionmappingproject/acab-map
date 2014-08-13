@@ -7,7 +7,7 @@ client = MongoClient()
 incidents = client.acab_db.incidents
 
 def do_stuff(year):
-    police_file = json.loads( open('sfpd-compiled/sfpd-%d.json' % year).read() )
+    police_file = json.loads( open('sfpd/sfpd-%d.json' % year).read() )
     for incident in police_file:
         time = incident.pop('Time',None)
         incident['Date'] = datetime.strptime('%s %s' % (incident['Date'], time), '%m/%d/%Y %H:%M' )
