@@ -40,6 +40,14 @@ def juveniles(year):
         { '$sort' : {'count':-1} }
     ])
 
+def incidentnums(year):
+    thing = incidents.aggregate([
+        { '$match' : {'Date': {'$gte':datetime(year,1,1),'$lte':datetime(year,12,31)} } },
+        { '$group' : {"_id":"$IncidntNum", "count":{"$sum":1} } },
+        { '$sort' : {'count':-1} }
+    ])
+    return len(thing['result'])
+
 def resolution(year):
     return incidents.aggregate([
         { '$match' : {'Date': {'$gte':datetime(year,1,1),'$lte':datetime(year,12,31)} } },
